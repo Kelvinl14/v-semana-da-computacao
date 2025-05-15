@@ -1,10 +1,11 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 220 33% 98%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -13,10 +14,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 230 70% 55%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
+    --secondary: 260 72% 62%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
@@ -35,19 +36,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -97,5 +91,35 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .bg-dot-pattern {
+    background-size: 20px 20px;
+  }
+  
+  .nav-link {
+    @apply relative text-gray-500 hover:text-event-blue transition-colors duration-200;
+  }
+
+  .nav-link.active {
+    @apply text-event-blue font-medium;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-event-blue to-event-purple bg-clip-text text-transparent;
+  }
+
+  .tab-button {
+    @apply px-4 py-2 font-semibold rounded-md transition-colors duration-200;
+  }
+  
+  .tab-button.active {
+    @apply bg-event-blue text-white;
+  }
+  
+  .tab-button:not(.active) {
+    @apply bg-white text-event-blue hover:bg-event-lightblue;
   }
 }

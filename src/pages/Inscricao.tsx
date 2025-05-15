@@ -1,0 +1,188 @@
+
+import { useState } from "react";
+import Layout from "../components/Layout/Layout";
+import { toast } from "sonner";
+
+const Inscricao = () => {
+  const [formData, setFormData] = useState({
+    nome: "",
+    email: "",
+    celular: "",
+    participacao: [] as string[]
+  });
+  
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+  
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, checked } = e.target;
+    
+    setFormData(prev => {
+      if (checked) {
+        return { ...prev, participacao: [...prev.participacao, value] };
+      } else {
+        return { ...prev, participacao: prev.participacao.filter(item => item !== value) };
+      }
+    });
+  };
+  
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (formData.nome && formData.email && formData.celular && formData.participacao.length > 0) {
+      toast.success("Inscrição realizada com sucesso!");
+      setFormData({
+        nome: "",
+        email: "",
+        celular: "",
+        participacao: []
+      });
+    } else {
+      toast.error("Por favor, preencha todos os campos obrigatórios");
+    }
+  };
+  
+  return (
+    <Layout>
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <h1 className="text-3xl md:text-4xl font-bold mb-8 text-center text-gray-900">
+            Inscrição para a Semana da Computação
+          </h1>
+          
+          <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-sm">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label htmlFor="nome" className="block mb-2 text-gray-700 font-medium">
+                  Nome completo
+                </label>
+                <input
+                  type="text"
+                  id="nome"
+                  name="nome"
+                  value={formData.nome}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-event-blue focus:border-transparent"
+                  placeholder="Digite seu nome completo"
+                  required
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="email" className="block mb-2 text-gray-700 font-medium">
+                  E-mail
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-event-blue focus:border-transparent"
+                  placeholder="exemplo@email.com"
+                  required
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="celular" className="block mb-2 text-gray-700 font-medium">
+                  Celular
+                </label>
+                <input
+                  type="tel"
+                  id="celular"
+                  name="celular"
+                  value={formData.celular}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-event-blue focus:border-transparent"
+                  placeholder="(00) 00000-0000"
+                  required
+                />
+              </div>
+              
+              <div>
+                <p className="block mb-3 text-gray-700 font-medium">
+                  Escolha sua participação:
+                </p>
+                
+                <div className="space-y-3">
+                  <div className="flex items-center">
+                    <input
+                      type="checkbox"
+                      id="palestra"
+                      name="participacao"
+                      value="Palestra"
+                      checked={formData.participacao.includes("Palestra")}
+                      onChange={handleCheckboxChange}
+                      className="h-5 w-5 text-event-blue"
+                    />
+                    <label htmlFor="palestra" className="ml-2">
+                      Palestra
+                    </label>
+                  </div>
+                  
+                  <div className="flex items-center">
+                    <input
+                      type="checkbox"
+                      id="workshop"
+                      name="participacao"
+                      value="Workshop"
+                      checked={formData.participacao.includes("Workshop")}
+                      onChange={handleCheckboxChange}
+                      className="h-5 w-5 text-event-blue"
+                    />
+                    <label htmlFor="workshop" className="ml-2">
+                      Workshop
+                    </label>
+                  </div>
+                  
+                  <div className="flex items-center">
+                    <input
+                      type="checkbox"
+                      id="minicurso"
+                      name="participacao"
+                      value="Minicurso"
+                      checked={formData.participacao.includes("Minicurso")}
+                      onChange={handleCheckboxChange}
+                      className="h-5 w-5 text-event-blue"
+                    />
+                    <label htmlFor="minicurso" className="ml-2">
+                      Minicurso
+                    </label>
+                  </div>
+                  
+                  <div className="flex items-center">
+                    <input
+                      type="checkbox"
+                      id="campeonato"
+                      name="participacao"
+                      value="Campeonato de Jogos"
+                      checked={formData.participacao.includes("Campeonato de Jogos")}
+                      onChange={handleCheckboxChange}
+                      className="h-5 w-5 text-event-blue"
+                    />
+                    <label htmlFor="campeonato" className="ml-2">
+                      Campeonato de Jogos
+                    </label>
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <button
+                  type="submit"
+                  className="bg-event-blue hover:bg-blue-600 text-white px-6 py-3 rounded-md transition-colors w-full font-medium"
+                >
+                  Enviar inscrição
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </Layout>
+  );
+};
+
+export default Inscricao;
