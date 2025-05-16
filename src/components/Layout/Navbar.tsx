@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Gamepad } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,6 +12,7 @@ const Navbar = () => {
     { name: "Palestras", path: "/palestras" },
     { name: "Programação", path: "/programacao" },
     { name: "Workshops", path: "/workshops" },
+    { name: "Torneio de Jogos", path: "/torneio-jogos", icon: <Gamepad size={16} className="mr-1" /> },
     { name: "Galeria", path: "/galeria" },
   ];
 
@@ -32,8 +33,9 @@ const Navbar = () => {
             <Link
               key={item.name}
               to={item.path}
-              className={`nav-link ${isActive(item.path) ? "active" : ""}`}
+              className={`nav-link flex items-center ${isActive(item.path) ? "active" : ""}`}
             >
+              {item.icon && item.icon}
               {item.name}
             </Link>
           ))}
@@ -63,9 +65,10 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`nav-link ${isActive(item.path) ? "active" : ""} block py-2`}
+                className={`nav-link ${isActive(item.path) ? "active" : ""} block py-2 flex items-center`}
                 onClick={() => setIsOpen(false)}
               >
+                {item.icon && item.icon}
                 {item.name}
               </Link>
             ))}

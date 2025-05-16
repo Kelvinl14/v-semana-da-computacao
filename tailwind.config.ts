@@ -67,6 +67,20 @@ export default {
 					blue: '#4169E1',
 					purple: '#8052EC',
 					lightblue: '#EBF1FF'
+				},
+				// Gaming theme colors
+				neon: {
+					green: '#39FF14',
+					blue: '#1E90FF',
+					purple: '#9370DB',
+					orange: '#FF8C00',
+					pink: '#FF1493'
+				},
+				gaming: {
+					dark: '#1A1F2C',
+					darker: '#151A26',
+					card: '#221F26',
+					highlight: '#2A2438'
 				}
 			},
 			borderRadius: {
@@ -94,15 +108,30 @@ export default {
 				'fade-in': {
 					'0%': { opacity: '0' },
 					'100%': { opacity: '1' }
+				},
+				'glow': {
+					'0%, 100%': { 
+						textShadow: '0 0 10px rgba(57, 255, 20, 0.7), 0 0 20px rgba(57, 255, 20, 0.5)'
+					},
+					'50%': { 
+						textShadow: '0 0 15px rgba(57, 255, 20, 0.9), 0 0 25px rgba(57, 255, 20, 0.7), 0 0 35px rgba(57, 255, 20, 0.5)'
+					}
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.5s ease-out'
+				'fade-in': 'fade-in 0.5s ease-out',
+				'glow': 'glow 2s ease-in-out infinite',
+				'float': 'float 3s ease-in-out infinite'
 			},
 			backgroundImage: {
 				'dot-pattern': 'radial-gradient(circle, #d9d9d9 1px, transparent 1px)',
+				'gaming-gradient': 'linear-gradient(to bottom, #1A1F2C, #151A26)',
 			},
 		}
 	},

@@ -43,6 +43,14 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Gaming theme colors */
+    --neon-green: 115 100% 54%;
+    --neon-blue: 210 100% 60%;
+    --neon-purple: 280 100% 65%;
+    --neon-orange: 30 100% 60%;
+    --neon-pink: 330 100% 65%;
+    --gamer-bg: 260 15% 13%;
   }
 
   .dark {
@@ -121,5 +129,71 @@
   
   .tab-button:not(.active) {
     @apply bg-white text-event-blue hover:bg-event-lightblue;
+  }
+  
+  /* Gaming theme styles */
+  .gamer-bg {
+    @apply bg-[#1A1F2C] bg-gradient-to-b from-[#1A1F2C] to-[#151a26];
+    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 25px 25px;
+  }
+  
+  .text-neon-green {
+    @apply text-[#39ff14];
+  }
+  
+  .text-neon-blue {
+    @apply text-[#1E90FF];
+  }
+  
+  .text-neon-orange {
+    @apply text-[#FF8C00];
+  }
+  
+  .gamer-text {
+    @apply font-extrabold tracking-wide;
+  }
+  
+  .glow-text {
+    text-shadow: 0 0 10px rgba(57, 255, 20, 0.7), 0 0 20px rgba(57, 255, 20, 0.5);
+  }
+  
+  .neon-card {
+    @apply bg-black/50 rounded-lg p-6 border border-[#39ff14] shadow-lg;
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+  }
+  
+  .neon-button {
+    @apply px-6 py-3 rounded-md font-bold text-white bg-black border-2 border-[#39ff14] transition-all duration-300;
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+  }
+  
+  .neon-button:hover {
+    @apply border-[#39ff14] bg-[#39ff14]/10;
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.7), 0 0 30px rgba(57, 255, 20, 0.4);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  }
+  
+  .game-card {
+    @apply rounded-lg overflow-hidden transition-all duration-300 bg-black/60 border border-transparent hover:border-[#39ff14];
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(57, 255, 20, 0.2);
+  }
+  
+  .game-card-header {
+    @apply p-4 text-white;
+  }
+  
+  .game-card-body {
+    @apply p-4;
+  }
+  
+  .pixel-border {
+    @apply overflow-hidden rounded-md border-4 border-[#39ff14];
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
   }
 }
