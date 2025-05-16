@@ -4,137 +4,183 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Gamepad, Keyboard, Joystick, MousePointerClick } from "lucide-react";
+import { Gamepad, Shield, Flag, Info } from "lucide-react";
 
 const TorneioJogos = () => {
   const games = [
     {
       name: "Brawl Stars",
-      color: "bg-green-500",
       format: "8 times de 3 jogadores",
       slots: 24,
       style: "Mata-Mata 3v3",
-      image: "https://placehold.co/300x200/22272e/39ff14?text=Brawl+Stars",
-      duration: "2 minutos por partida",
-      notes: "Mapas sorteados previamente",
+      image: "https://placehold.co/300x200/f8f8f8/2e3a59?text=Brawl+Stars",
+      conditions: [
+        "Modo: Mata-Mata (3v3)",
+        "Mapas: Sorteados previamente",
+        "Duração: 2 minutos por partida"
+      ],
       icon: <Gamepad className="w-6 h-6" />
     },
     {
       name: "Naruto",
-      color: "bg-orange-500",
       format: "Duelo 1x1",
       slots: 32,
       style: "Versus",
-      image: "https://placehold.co/300x200/22272e/FF8C00?text=Naruto",
-      duration: "99s por round",
-      notes: "Todos os personagens liberados",
-      icon: <Joystick className="w-6 h-6" />
+      image: "https://placehold.co/300x200/f8f8f8/2e3a59?text=Naruto",
+      conditions: [
+        "Modo: Versus (1v1)",
+        "Personagens: Todos liberados",
+        "Duração: 99 segundos por round"
+      ],
+      icon: <Gamepad className="w-6 h-6" />
     },
     {
       name: "Mortal Kombat",
-      color: "bg-red-600",
       format: "Duelo 1x1",
       slots: 32,
       style: "Eliminação",
-      image: "https://placehold.co/300x200/22272e/FF0000?text=Mortal+Kombat",
-      duration: "90 segundos por round",
-      notes: "Vida cheia, melhor de 3",
-      icon: <Joystick className="w-6 h-6" />
+      image: "https://placehold.co/300x200/f8f8f8/2e3a59?text=Mortal+Kombat",
+      conditions: [
+        "Modo: Torneio (1v1)",
+        "Vida: 100%",
+        "Duração: 90 segundos por round"
+      ],
+      icon: <Gamepad className="w-6 h-6" />
     },
     {
       name: "Counter-Strike 1.6",
-      color: "bg-blue-500",
       format: "6 times de 4 jogadores",
       slots: 24,
       style: "Combate por rodadas",
-      image: "https://placehold.co/300x200/22272e/1E90FF?text=CS+1.6",
-      duration: "1:45 por round",
-      notes: "de_dust2 e outros mapas clássicos",
-      icon: <MousePointerClick className="w-6 h-6" />
+      image: "https://placehold.co/300x200/f8f8f8/2e3a59?text=CS+1.6",
+      conditions: [
+        "Mapa: de_dust2",
+        "Rodadas: Eliminação",
+        "Tempo: 1:45 por round"
+      ],
+      icon: <Gamepad className="w-6 h-6" />
     },
     {
       name: "FIFA",
-      color: "bg-yellow-500",
       format: "Partidas 1x1",
       slots: 16,
       style: "Futebol Virtual",
-      image: "https://placehold.co/300x200/22272e/FFD700?text=FIFA",
-      duration: "6 minutos por partida",
-      notes: "Dificuldade: Profissional",
+      image: "https://placehold.co/300x200/f8f8f8/2e3a59?text=FIFA",
+      conditions: [
+        "Tempo: 6 minutos por partida",
+        "Dificuldade: Profissional",
+        "Times: Atualizados"
+      ],
       icon: <Gamepad className="w-6 h-6" />
     },
     {
       name: "Mario Kart",
-      color: "bg-purple-500",
       format: "Corridas individuais",
       slots: 16,
       style: "Corrida",
-      image: "https://placehold.co/300x200/22272e/9370DB?text=Mario+Kart",
-      duration: "3 voltas",
-      notes: "Todos os itens ativos, personagens livres",
+      image: "https://placehold.co/300x200/f8f8f8/2e3a59?text=Mario+Kart",
+      conditions: [
+        "Corridas: 3 voltas",
+        "Itens: Todos ativos",
+        "Personagens: Livre escolha"
+      ],
       icon: <Gamepad className="w-6 h-6" />
     }
   ];
 
+  const penalties = [
+    {
+      title: "§1º Hacking/Cheating",
+      items: [
+        "Uso de softwares não autorizados que modifiquem o jogo",
+        "Exploração deliberada de bugs ou falhas do jogo",
+        "Uso de macros ou automação de ações"
+      ]
+    },
+    {
+      title: "§2º Comportamento inadequado",
+      items: [
+        "Linguagem ofensiva, discriminatória ou assédio",
+        "Provocações excessivas (toxicity)",
+        "Sabotagem intencional de partidas",
+        "Combinação de resultados (match fixing)"
+      ]
+    },
+    {
+      title: "§3º Irregularidades administrativas",
+      items: [
+        "Uso de contas compartilhadas",
+        "Desrespeito às decisões da organização"
+      ]
+    }
+  ];
+
+  const penaltyLevels = [
+    "I. Advertência verbal",
+    "II. Perda de vantagem competitiva",
+    "III. Desclassificação da partida",
+    "IV. Eliminação do torneio"
+  ];
+
   return (
     <Layout>
-      <div className="gamer-bg min-h-screen text-white pb-16" id="torneio-de-jogos">
+      <div className="min-h-screen bg-white text-gray-800 pb-16" id="torneio-de-jogos">
         <div className="container mx-auto px-4">
           {/* Gif centralizado */}
-          <div className="flex justify-center pt-8 pb-4">
-            <div className="pixel-border">
-              <img src="https://placehold.co/300x200/22272e/39ff14?text=Gaming+GIF" alt="Gaming animation" className="w-full h-auto" />
-            </div>
+          <div className="flex justify-center pt-12 pb-8">
+            <img 
+              src="https://placehold.co/300x200/f8f8f8/2e3a59?text=Gaming+GIF" 
+              alt="Gaming animation" 
+              className="rounded-lg shadow-sm"
+            />
           </div>
           
           {/* Header section */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 gamer-text glow-text">Torneio de Jogos</h1>
-            <h2 className="text-xl md:text-2xl mb-6 text-neon-blue">Semana da Computação</h2>
-            <p className="max-w-3xl mx-auto text-lg">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Torneio de Jogos</h1>
+            <h2 className="text-xl md:text-2xl mb-6 text-[#2e3a59]">Semana da Computação</h2>
+            <p className="max-w-3xl mx-auto text-lg text-gray-600">
               Participe do torneio de jogos que acontecerá durante a Semana da Computação! 
               Traga seus amigos e desafie seus limites em partidas emocionantes.
             </p>
           </div>
 
           {/* Datas e horários */}
-          <div className="neon-card mb-12">
-            <div className="flex items-center mb-4">
-              <Keyboard className="mr-2 text-neon-green" />
-              <h2 className="text-2xl font-bold">Datas e Horários</h2>
+          <div className="bg-gray-50 rounded-lg p-8 shadow-sm mb-16">
+            <div className="flex items-center mb-6">
+              <Flag className="mr-3 text-[#2e3a59]" />
+              <h2 className="text-2xl font-bold text-gray-900">Datas e Horários</h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-black/50 p-4 rounded-lg border border-neon-blue">
-                <h3 className="text-neon-blue mb-2">Fase de Grupos</h3>
-                <p>15/09/2025 - 14:00 às 18:00</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-white p-5 rounded-md shadow-sm border border-gray-100">
+                <h3 className="text-[#2e3a59] font-semibold mb-2">Fase de Grupos</h3>
+                <p className="text-gray-700">15/09/2025 - 14:00 às 18:00</p>
               </div>
-              <div className="bg-black/50 p-4 rounded-lg border border-neon-orange">
-                <h3 className="text-neon-orange mb-2">Semifinais</h3>
-                <p>16/09/2025 - 14:00 às 17:00</p>
+              <div className="bg-white p-5 rounded-md shadow-sm border border-gray-100">
+                <h3 className="text-[#2e3a59] font-semibold mb-2">Semifinais</h3>
+                <p className="text-gray-700">16/09/2025 - 14:00 às 17:00</p>
               </div>
-              <div className="bg-black/50 p-4 rounded-lg border border-neon-green">
-                <h3 className="text-neon-green mb-2">Finais</h3>
-                <p>17/09/2025 - 15:00 às 18:00</p>
+              <div className="bg-white p-5 rounded-md shadow-sm border border-gray-100">
+                <h3 className="text-[#2e3a59] font-semibold mb-2">Finais</h3>
+                <p className="text-gray-700">17/09/2025 - 15:00 às 18:00</p>
               </div>
             </div>
           </div>
           
           {/* Games section */}
-          <div className="mb-12">
-            <div className="flex items-center mb-6">
-              <Gamepad className="mr-2 text-neon-green" />
-              <h2 className="text-2xl font-bold">Modalidades</h2>
+          <div className="mb-16">
+            <div className="flex items-center mb-8">
+              <Gamepad className="mr-3 text-[#2e3a59]" />
+              <h2 className="text-2xl font-bold text-gray-900">Modalidades</h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {games.map((game, index) => (
-                <div key={index} className="game-card">
-                  <div className={`game-card-header ${game.color}`}>
-                    <h3 className="text-xl font-bold flex items-center">
-                      {game.icon}
-                      <span className="ml-2">{game.name}</span>
-                    </h3>
+                <div key={index} className="bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:translate-y-[-5px]">
+                  <div className="p-4 border-b border-gray-100 flex items-center">
+                    {game.icon}
+                    <h3 className="ml-2 text-xl font-semibold">{game.name}</h3>
                   </div>
-                  <div className="game-card-body">
+                  <div className="p-5">
                     <div className="aspect-w-16 aspect-h-9 mb-4">
                       <img 
                         src={game.image} 
@@ -142,35 +188,40 @@ const TorneioJogos = () => {
                         className="object-cover rounded-md"
                       />
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-3">
                       <div className="flex justify-between items-center">
-                        <span className="font-medium">Formato:</span>
-                        <span>{game.format}</span>
+                        <span className="font-medium text-gray-700">Formato:</span>
+                        <span className="text-gray-600">{game.format}</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="font-medium">Vagas:</span>
-                        <Badge variant="outline" className="border-neon-green text-neon-green">
+                        <span className="font-medium text-gray-700">Vagas:</span>
+                        <Badge variant="outline" className="text-[#2e3a59] border-[#2e3a59]">
                           {game.slots} jogadores
                         </Badge>
                       </div>
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium">Estilo:</span>
-                        <span>{game.style}</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium">Duração:</span>
-                        <span>{game.duration}</span>
+                      <div>
+                        <h4 className="font-medium text-gray-700 mb-2">Condições:</h4>
+                        <ul className="text-gray-600 space-y-1 text-sm">
+                          {game.conditions.map((condition, i) => (
+                            <li key={i}>{condition}</li>
+                          ))}
+                        </ul>
                       </div>
                       <HoverCard>
                         <HoverCardTrigger asChild>
-                          <Button variant="ghost" className="w-full text-neon-blue border border-neon-blue hover:bg-blue-950 mt-2">
-                            Ver regras
+                          <Button variant="outline" className="w-full text-[#2e3a59] border-[#2e3a59] hover:bg-gray-50 mt-3">
+                            Ver mais
                           </Button>
                         </HoverCardTrigger>
-                        <HoverCardContent className="w-80 bg-black border border-neon-blue">
+                        <HoverCardContent className="w-80 bg-white border border-gray-200">
                           <div className="space-y-2">
-                            <h4 className="font-bold text-neon-blue">Regras: {game.name}</h4>
-                            <p>{game.notes}</p>
+                            <h4 className="font-bold text-[#2e3a59]">Detalhes: {game.name}</h4>
+                            <p>{game.style}</p>
+                            <ul className="text-gray-600 space-y-1 text-sm list-disc pl-5">
+                              {game.conditions.map((condition, i) => (
+                                <li key={i}>{condition}</li>
+                              ))}
+                            </ul>
                           </div>
                         </HoverCardContent>
                       </HoverCard>
@@ -181,33 +232,52 @@ const TorneioJogos = () => {
             </div>
           </div>
           
-          {/* Inscrição e Regras */}
-          <div className="neon-card mb-12">
-            <div className="flex items-center mb-4">
-              <Joystick className="mr-2 text-neon-orange" />
-              <h2 className="text-2xl font-bold">Inscrição e Regras</h2>
+          {/* Regras e Penalidades */}
+          <div className="bg-gray-50 rounded-lg p-8 shadow-sm mb-16">
+            <div className="flex items-center mb-6">
+              <Shield className="mr-3 text-[#2e3a59]" />
+              <h2 className="text-2xl font-bold text-gray-900">Regras e Penalidades</h2>
             </div>
-            <ul className="list-disc list-inside space-y-2 mb-6">
-              <li>Inscrição por formulário online disponível no site ou QR Code.</li>
-              <li>Cada equipe deve indicar um capitão responsável.</li>
-              <li>Participantes devem chegar com 15 minutos de antecedência.</li>
-              <li>Atrasos acima de 10 minutos resultam em WO.</li>
-            </ul>
+            <p className="mb-6 text-gray-700">
+              Nenhuma forma de trapaça, vantagem indevida ou comportamento antidesportivo
+              será tolerada durante o evento. Considera-se conduta antidesportiva, sem limitação:
+            </p>
             
-            <div className="flex justify-center mt-6">
+            <div className="space-y-6 mb-8">
+              {penalties.map((section, index) => (
+                <div key={index} className="bg-white p-5 rounded-md shadow-sm border border-gray-100">
+                  <h3 className="font-semibold mb-3 text-[#2e3a59]">{section.title}</h3>
+                  <ul className="list-disc pl-5 space-y-1 text-gray-600">
+                    {section.items.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            
+            <div className="bg-white p-5 rounded-md shadow-sm border border-gray-100">
+              <h3 className="font-semibold mb-3 flex items-center">
+                <Info className="w-5 h-5 mr-2 text-[#2e3a59]" />
+                <span>As penalidades serão aplicadas conforme a gravidade da infração:</span>
+              </h3>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600">
+                {penaltyLevels.map((level, i) => (
+                  <li key={i} className="flex items-center">
+                    <span className="mr-2">•</span>
+                    {level}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div className="flex justify-center mt-8">
               <a 
                 href="#download-regulamento" 
-                className="neon-button flex items-center justify-center space-x-2"
+                className="px-6 py-3 bg-[#2e3a59] text-white rounded-md shadow-sm hover:bg-[#212c48] transition-colors flex items-center justify-center space-x-2"
               >
                 <span>📄 Baixar Regulamento Oficial</span>
               </a>
-            </div>
-          </div>
-          
-          {/* Gif mascote no rodapé */}
-          <div className="flex justify-center mt-12">
-            <div className="pixel-border">
-              <img src="https://placehold.co/200x100/22272e/9370DB?text=Pixel+Mascot" alt="Pixel Mascot" className="w-full h-auto" />
             </div>
           </div>
         </div>
