@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { scheduleDay1, scheduleDay2, scheduleDay3, workshopsData } from "../../data/scheduleData";
+import { scheduleDay1, scheduleDay2, scheduleDay3, workshopsData, lecturesData } from "../../data/scheduleData";
 
 interface SelectableEventProps {
   eventType: string;
@@ -22,12 +22,7 @@ const SelectableEventBlocks = ({ eventType, onChange }: SelectableEventProps) =>
   const getEventData = () => {
     switch (eventType) {
       case "Palestra":
-        // Combine schedule data and filter only lectures
-        const allSchedules = [...scheduleDay1, ...scheduleDay2, ...scheduleDay3];
-        return allSchedules.filter(item => 
-          item.activity.toLowerCase().includes("palestra") || 
-          item.activity.toLowerCase().includes("keynote")
-        );
+        return lecturesData;
       case "Minicurso":
         return workshopsData;
       case "Torneio de Jogos":
