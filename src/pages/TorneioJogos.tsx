@@ -1,6 +1,5 @@
 
 import Layout from "../components/Layout/Layout";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -19,7 +18,8 @@ const TorneioJogos = () => {
         "Mapas: Sorteados previamente",
         "Duração: 2 minutos por partida"
       ],
-      icon: <Gamepad className="w-6 h-6" />
+      icon: <Gamepad className="w-6 h-6" />,
+      color: "neon-green"
     },
     {
       name: "Naruto",
@@ -32,7 +32,8 @@ const TorneioJogos = () => {
         "Personagens: Todos liberados",
         "Duração: 99 segundos por round"
       ],
-      icon: <Gamepad className="w-6 h-6" />
+      icon: <Gamepad className="w-6 h-6" />,
+      color: "neon-blue"
     },
     {
       name: "Mortal Kombat",
@@ -45,7 +46,8 @@ const TorneioJogos = () => {
         "Vida: 100%",
         "Duração: 90 segundos por round"
       ],
-      icon: <Gamepad className="w-6 h-6" />
+      icon: <Gamepad className="w-6 h-6" />,
+      color: "neon-purple"
     },
     {
       name: "Counter-Strike 1.6",
@@ -58,7 +60,8 @@ const TorneioJogos = () => {
         "Rodadas: Eliminação",
         "Tempo: 1:45 por round"
       ],
-      icon: <Gamepad className="w-6 h-6" />
+      icon: <Gamepad className="w-6 h-6" />,
+      color: "neon-orange"
     },
     {
       name: "FIFA",
@@ -71,7 +74,8 @@ const TorneioJogos = () => {
         "Dificuldade: Profissional",
         "Times: Atualizados"
       ],
-      icon: <Gamepad className="w-6 h-6" />
+      icon: <Gamepad className="w-6 h-6" />,
+      color: "neon-pink"
     },
     {
       name: "Mario Kart",
@@ -84,7 +88,8 @@ const TorneioJogos = () => {
         "Itens: Todos ativos",
         "Personagens: Livre escolha"
       ],
-      icon: <Gamepad className="w-6 h-6" />
+      icon: <Gamepad className="w-6 h-6" />,
+      color: "neon-green"
     }
   ];
 
@@ -146,23 +151,23 @@ const TorneioJogos = () => {
           </div>
 
           {/* Datas e horários */}
-          <div className="bg-gray-50 rounded-lg p-8 shadow-sm mb-16">
+          <div className="bg-[#1A1F2C] text-white rounded-lg p-8 shadow-sm mb-16">
             <div className="flex items-center mb-6">
-              <Flag className="mr-3 text-[#2e3a59]" />
-              <h2 className="text-2xl font-bold text-gray-900">Datas e Horários</h2>
+              <Flag className="mr-3 text-[#5ea8ff]" />
+              <h2 className="text-2xl font-bold">Datas e Horários</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white p-5 rounded-md shadow-sm border border-gray-100">
-                <h3 className="text-[#2e3a59] font-semibold mb-2">Fase de Grupos</h3>
-                <p className="text-gray-700">15/09/2025 - 14:00 às 18:00</p>
+              <div className="bg-[#222732] p-5 rounded-md shadow-sm border border-gray-700">
+                <h3 className="text-[#5ea8ff] font-semibold mb-2">Fase de Grupos</h3>
+                <p className="text-gray-300">15/09/2025 - 14:00 às 18:00</p>
               </div>
-              <div className="bg-white p-5 rounded-md shadow-sm border border-gray-100">
-                <h3 className="text-[#2e3a59] font-semibold mb-2">Semifinais</h3>
-                <p className="text-gray-700">16/09/2025 - 14:00 às 17:00</p>
+              <div className="bg-[#222732] p-5 rounded-md shadow-sm border border-gray-700">
+                <h3 className="text-[#5ea8ff] font-semibold mb-2">Semifinais</h3>
+                <p className="text-gray-300">16/09/2025 - 14:00 às 17:00</p>
               </div>
-              <div className="bg-white p-5 rounded-md shadow-sm border border-gray-100">
-                <h3 className="text-[#2e3a59] font-semibold mb-2">Finais</h3>
-                <p className="text-gray-700">17/09/2025 - 15:00 às 18:00</p>
+              <div className="bg-[#222732] p-5 rounded-md shadow-sm border border-gray-700">
+                <h3 className="text-[#5ea8ff] font-semibold mb-2">Finais</h3>
+                <p className="text-gray-300">17/09/2025 - 15:00 às 18:00</p>
               </div>
             </div>
           </div>
@@ -175,9 +180,21 @@ const TorneioJogos = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {games.map((game, index) => (
-                <div key={index} className="bg-white rounded-lg overflow-hidden border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:translate-y-[-5px]">
+                <div 
+                  key={index} 
+                  className={`bg-white rounded-lg overflow-hidden border border-${game.color} shadow-sm transition-all duration-300 hover:shadow-md hover:translate-y-[-5px]`}
+                  style={{borderColor: game.color === 'neon-green' ? '#66ff66' : 
+                                      game.color === 'neon-blue' ? '#5ea8ff' : 
+                                      game.color === 'neon-purple' ? '#b49fe0' : 
+                                      game.color === 'neon-orange' ? '#ffb347' : '#ff66aa'}}
+                >
                   <div className="p-4 border-b border-gray-100 flex items-center">
-                    {game.icon}
+                    <span style={{color: game.color === 'neon-green' ? '#66ff66' : 
+                                        game.color === 'neon-blue' ? '#5ea8ff' : 
+                                        game.color === 'neon-purple' ? '#b49fe0' : 
+                                        game.color === 'neon-orange' ? '#ffb347' : '#ff66aa'}}>
+                      {game.icon}
+                    </span>
                     <h3 className="ml-2 text-xl font-semibold">{game.name}</h3>
                   </div>
                   <div className="p-5">
@@ -195,7 +212,16 @@ const TorneioJogos = () => {
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="font-medium text-gray-700">Vagas:</span>
-                        <Badge variant="outline" className="text-[#2e3a59] border-[#2e3a59]">
+                        <Badge variant="outline" style={{
+                          color: game.color === 'neon-green' ? '#66ff66' : 
+                                 game.color === 'neon-blue' ? '#5ea8ff' : 
+                                 game.color === 'neon-purple' ? '#b49fe0' : 
+                                 game.color === 'neon-orange' ? '#ffb347' : '#ff66aa',
+                          borderColor: game.color === 'neon-green' ? '#66ff66' : 
+                                      game.color === 'neon-blue' ? '#5ea8ff' : 
+                                      game.color === 'neon-purple' ? '#b49fe0' : 
+                                      game.color === 'neon-orange' ? '#ffb347' : '#ff66aa'
+                        }}>
                           {game.slots} jogadores
                         </Badge>
                       </div>
@@ -207,24 +233,6 @@ const TorneioJogos = () => {
                           ))}
                         </ul>
                       </div>
-                      <HoverCard>
-                        <HoverCardTrigger asChild>
-                          <Button variant="outline" className="w-full text-[#2e3a59] border-[#2e3a59] hover:bg-gray-50 mt-3">
-                            Ver mais
-                          </Button>
-                        </HoverCardTrigger>
-                        <HoverCardContent className="w-80 bg-white border border-gray-200">
-                          <div className="space-y-2">
-                            <h4 className="font-bold text-[#2e3a59]">Detalhes: {game.name}</h4>
-                            <p>{game.style}</p>
-                            <ul className="text-gray-600 space-y-1 text-sm list-disc pl-5">
-                              {game.conditions.map((condition, i) => (
-                                <li key={i}>{condition}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        </HoverCardContent>
-                      </HoverCard>
                     </div>
                   </div>
                 </div>
@@ -233,21 +241,21 @@ const TorneioJogos = () => {
           </div>
           
           {/* Regras e Penalidades */}
-          <div className="bg-gray-50 rounded-lg p-8 shadow-sm mb-16">
+          <div className="bg-[#1A1F2C] text-white rounded-lg p-8 shadow-sm mb-16">
             <div className="flex items-center mb-6">
-              <Shield className="mr-3 text-[#2e3a59]" />
-              <h2 className="text-2xl font-bold text-gray-900">Regras e Penalidades</h2>
+              <Shield className="mr-3 text-[#5ea8ff]" />
+              <h2 className="text-2xl font-bold">Regras e Penalidades</h2>
             </div>
-            <p className="mb-6 text-gray-700">
+            <p className="mb-6 text-gray-300">
               Nenhuma forma de trapaça, vantagem indevida ou comportamento antidesportivo
               será tolerada durante o evento. Considera-se conduta antidesportiva, sem limitação:
             </p>
             
             <div className="space-y-6 mb-8">
               {penalties.map((section, index) => (
-                <div key={index} className="bg-white p-5 rounded-md shadow-sm border border-gray-100">
-                  <h3 className="font-semibold mb-3 text-[#2e3a59]">{section.title}</h3>
-                  <ul className="list-disc pl-5 space-y-1 text-gray-600">
+                <div key={index} className="bg-[#222732] p-5 rounded-md shadow-sm border border-gray-700">
+                  <h3 className="font-semibold mb-3 text-[#5ea8ff]">{section.title}</h3>
+                  <ul className="list-disc pl-5 space-y-1 text-gray-300">
                     {section.items.map((item, i) => (
                       <li key={i}>{item}</li>
                     ))}
@@ -256,12 +264,12 @@ const TorneioJogos = () => {
               ))}
             </div>
             
-            <div className="bg-white p-5 rounded-md shadow-sm border border-gray-100">
+            <div className="bg-[#222732] p-5 rounded-md shadow-sm border border-gray-700">
               <h3 className="font-semibold mb-3 flex items-center">
-                <Info className="w-5 h-5 mr-2 text-[#2e3a59]" />
+                <Info className="w-5 h-5 mr-2 text-[#5ea8ff]" />
                 <span>As penalidades serão aplicadas conforme a gravidade da infração:</span>
               </h3>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600">
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-300">
                 {penaltyLevels.map((level, i) => (
                   <li key={i} className="flex items-center">
                     <span className="mr-2">•</span>
@@ -274,7 +282,7 @@ const TorneioJogos = () => {
             <div className="flex justify-center mt-8">
               <a 
                 href="#download-regulamento" 
-                className="px-6 py-3 bg-[#2e3a59] text-white rounded-md shadow-sm hover:bg-[#212c48] transition-colors flex items-center justify-center space-x-2"
+                className="px-6 py-3 bg-[#5ea8ff] text-white rounded-md shadow-sm hover:bg-[#4d8ad9] transition-colors flex items-center justify-center space-x-2"
               >
                 <span>📄 Baixar Regulamento Oficial</span>
               </a>
