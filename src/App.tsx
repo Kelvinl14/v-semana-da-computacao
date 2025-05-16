@@ -8,7 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Programacao from "./pages/Programacao";
 import Palestras from "./pages/Palestras";
-import Workshops from "./pages/Workshops";
+import Minicursos from "./pages/Minicursos";
 import TorneioJogos from "./pages/TorneioJogos";
 import Inscricao from "./pages/Inscricao";
 import NotFound from "./pages/NotFound";
@@ -25,7 +25,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/programacao" element={<Programacao />} />
           <Route path="/palestras" element={<Palestras />} />
-          <Route path="/workshops" element={<Workshops />} />
+          <Route path="/minicursos" element={<Minicursos />} />
           <Route path="/torneio-jogos" element={<TorneioJogos />} />
           <Route path="/inscricao" element={<Inscricao />} />
           <Route path="*" element={<NotFound />} />

@@ -182,36 +182,38 @@ const TorneioJogos = () => {
               {games.map((game, index) => (
                 <div 
                   key={index} 
-                  className={`bg-white rounded-lg overflow-hidden border border-${game.color} shadow-sm transition-all duration-300 hover:shadow-md hover:translate-y-[-5px]`}
+                  className="bg-[#1A1F2C] rounded-lg overflow-hidden border shadow-sm transition-all duration-300 hover:shadow-md hover:translate-y-[-5px]"
                   style={{borderColor: game.color === 'neon-green' ? '#66ff66' : 
                                       game.color === 'neon-blue' ? '#5ea8ff' : 
                                       game.color === 'neon-purple' ? '#b49fe0' : 
                                       game.color === 'neon-orange' ? '#ffb347' : '#ff66aa'}}
                 >
-                  <div className="p-4 border-b border-gray-100 flex items-center">
-                    <span style={{color: game.color === 'neon-green' ? '#66ff66' : 
-                                        game.color === 'neon-blue' ? '#5ea8ff' : 
-                                        game.color === 'neon-purple' ? '#b49fe0' : 
-                                        game.color === 'neon-orange' ? '#ffb347' : '#ff66aa'}}>
+                  <div className="p-4 border-b border-gray-700 flex items-center" 
+                       style={{backgroundColor: game.color === 'neon-green' ? '#66ff66' : 
+                                              game.color === 'neon-blue' ? '#5ea8ff' : 
+                                              game.color === 'neon-purple' ? '#b49fe0' : 
+                                              game.color === 'neon-orange' ? '#ffb347' : '#ff66aa',
+                              color: '#1A1F2C'}}>
+                    <span>
                       {game.icon}
                     </span>
                     <h3 className="ml-2 text-xl font-semibold">{game.name}</h3>
                   </div>
-                  <div className="p-5">
-                    <div className="aspect-w-16 aspect-h-9 mb-4">
+                  <div className="p-0">
+                    <div className="w-full">
                       <img 
                         src={game.image} 
                         alt={game.name} 
-                        className="object-cover rounded-md"
+                        className="w-full object-cover"
                       />
                     </div>
-                    <div className="space-y-3">
+                    <div className="space-y-3 p-5 text-white">
                       <div className="flex justify-between items-center">
-                        <span className="font-medium text-gray-700">Formato:</span>
-                        <span className="text-gray-600">{game.format}</span>
+                        <span className="font-medium text-gray-300">Formato:</span>
+                        <span className="text-gray-100">{game.format}</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="font-medium text-gray-700">Vagas:</span>
+                        <span className="font-medium text-gray-300">Vagas:</span>
                         <Badge variant="outline" style={{
                           color: game.color === 'neon-green' ? '#66ff66' : 
                                  game.color === 'neon-blue' ? '#5ea8ff' : 
@@ -226,8 +228,8 @@ const TorneioJogos = () => {
                         </Badge>
                       </div>
                       <div>
-                        <h4 className="font-medium text-gray-700 mb-2">Condições:</h4>
-                        <ul className="text-gray-600 space-y-1 text-sm">
+                        <h4 className="font-medium text-gray-300 mb-2">Condições:</h4>
+                        <ul className="text-gray-100 space-y-1 text-sm">
                           {game.conditions.map((condition, i) => (
                             <li key={i}>{condition}</li>
                           ))}

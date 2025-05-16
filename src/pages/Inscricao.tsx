@@ -1,15 +1,18 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
 import { toast } from "sonner";
+import SelectableEventBlocks from "../components/Registration/SelectableEventBlocks";
 
 const Inscricao = () => {
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
     celular: "",
-    participacao: [] as string[]
+    participacao: [] as string[],
+    selectedEvents: [] as string[]
   });
+  
+  const [showEventsFor, setShowEventsFor] = useState<string[]>([]);
   
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -23,23 +26,55 @@ const Inscricao = () => {
       if (checked) {
         return { ...prev, participacao: [...prev.participacao, value] };
       } else {
-        return { ...prev, participacao: prev.participacao.filter(item => item !== value) };
+        return { 
+          ...prev, 
+          participacao: prev.participacao.filter(item => item !== value),
+        };
+      }
+    });
+    
+    // Update which event blocks to show
+    setShowEventsFor(prev => {
+      if (checked) {
+        return [...prev, value];
+      } else {
+        return prev.filter(item => item !== value);
       }
     });
   };
   
+  const handleEventSelection = (eventType: string, selectedItems: string[]) => {
+    setFormData(prev => ({
+      ...prev,
+      selectedEvents: [
+        ...prev.selectedEvents.filter(event => {
+          // Keep events from other categories
+          const eventTypePrefix = event.split(":")[0];
+          return eventTypePrefix !== eventType;
+        }),
+        ...selectedItems.map(item => `${eventType}:${item}`)
+      ]
+    }));
+  };
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.nome && formData.email && formData.celular && formData.participacao.length > 0) {
+    
+    const hasRequiredFields = formData.nome && formData.email && formData.celular && formData.participacao.length > 0;
+    const hasSelectedEvents = formData.selectedEvents.length > 0;
+    
+    if (hasRequiredFields && hasSelectedEvents) {
       toast.success("Inscrição realizada com sucesso!");
       setFormData({
         nome: "",
         email: "",
         celular: "",
-        participacao: []
+        participacao: [],
+        selectedEvents: []
       });
+      setShowEventsFor([]);
     } else {
-      toast.error("Por favor, preencha todos os campos obrigatórios");
+      toast.error("Por favor, preencha todos os campos obrigatórios e selecione pelo menos um evento");
     }
   };
   
@@ -125,21 +160,6 @@ const Inscricao = () => {
                   <div className="flex items-center">
                     <input
                       type="checkbox"
-                      id="workshop"
-                      name="participacao"
-                      value="Workshop"
-                      checked={formData.participacao.includes("Workshop")}
-                      onChange={handleCheckboxChange}
-                      className="h-5 w-5 text-event-blue"
-                    />
-                    <label htmlFor="workshop" className="ml-2">
-                      Workshop
-                    </label>
-                  </div>
-                  
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
                       id="minicurso"
                       name="participacao"
                       value="Minicurso"
@@ -155,19 +175,41 @@ const Inscricao = () => {
                   <div className="flex items-center">
                     <input
                       type="checkbox"
-                      id="campeonato"
+                      id="torneio"
                       name="participacao"
-                      value="Campeonato de Jogos"
-                      checked={formData.participacao.includes("Campeonato de Jogos")}
+                      value="Torneio de Jogos"
+                      checked={formData.participacao.includes("Torneio de Jogos")}
                       onChange={handleCheckboxChange}
                       className="h-5 w-5 text-event-blue"
                     />
-                    <label htmlFor="campeonato" className="ml-2">
-                      Campeonato de Jogos
+                    <label htmlFor="torneio" className="ml-2">
+                      Torneio de Jogos
                     </label>
                   </div>
                 </div>
               </div>
+              
+              {/* Selectable event blocks */}
+              {showEventsFor.includes("Palestra") && (
+                <SelectableEventBlocks 
+                  eventType="Palestra" 
+                  onChange={(selected) => handleEventSelection("Palestra", selected)}
+                />
+              )}
+              
+              {showEventsFor.includes("Minicurso") && (
+                <SelectableEventBlocks 
+                  eventType="Minicurso" 
+                  onChange={(selected) => handleEventSelection("Minicurso", selected)}
+                />
+              )}
+              
+              {showEventsFor.includes("Torneio de Jogos") && (
+                <SelectableEventBlocks 
+                  eventType="Torneio de Jogos" 
+                  onChange={(selected) => handleEventSelection("Torneio de Jogos", selected)}
+                />
+              )}
               
               <div>
                 <button
