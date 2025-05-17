@@ -64,7 +64,14 @@ const Inscricao = () => {
     const hasSelectedEvents = formData.selectedEvents.length > 0;
     
     if (hasRequiredFields && hasSelectedEvents) {
-      toast.success("Inscrição realizada com sucesso!");
+      toast.success("Inscrição realizada com sucesso!", {
+        duration: 4000,
+        description: "Você receberá um e-mail de confirmação em breve.",
+        action: {
+          label: "Fechar",
+          onClick: () => toast.dismiss()
+        }
+      });
       setFormData({
         nome: "",
         email: "",
@@ -74,7 +81,14 @@ const Inscricao = () => {
       });
       setShowEventsFor([]);
     } else {
-      toast.error("Por favor, preencha todos os campos obrigatórios e selecione pelo menos um evento");
+      toast.error("Por favor, preencha todos os campos obrigatórios e selecione pelo menos um evento", {
+        duration: 4000,
+        description: "Certifique-se de que todos os campos obrigatórios estão preenchidos e que você selecionou pelo menos um evento.",
+        action: {
+          label: "Fechar",
+          onClick: () => toast.dismiss()
+        }
+        });
     }
   };
   

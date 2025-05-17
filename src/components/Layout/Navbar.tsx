@@ -9,9 +9,9 @@ const Navbar = () => {
   
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "Palestras", path: "/palestras" },
     { name: "Programação", path: "/programacao" },
-    { name: "Workshops", path: "/workshops" },
+    { name: "Palestras", path: "/palestras" },
+    { name: "Minicursos", path: "/Minicursos" },
     { name: "Torneio de Jogos", path: "/torneio-jogos", icon: <Gamepad size={16} className="mr-1" /> },
     { name: "Galeria", path: "/galeria" },
   ];

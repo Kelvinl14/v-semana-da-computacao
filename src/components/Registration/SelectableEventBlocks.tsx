@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { scheduleDay1, scheduleDay2, scheduleDay3, workshopsData, lecturesData } from "../../data/scheduleData";
+import { scheduleDay1, scheduleDay2, scheduleDay3, MinicursosData, lecturesData } from "../../data/scheduleData";
 
 interface SelectableEventProps {
   eventType: string;
@@ -24,7 +24,7 @@ const SelectableEventBlocks = ({ eventType, onChange }: SelectableEventProps) =>
       case "Palestra":
         return lecturesData;
       case "Minicurso":
-        return workshopsData;
+        return MinicursosData;
       case "Torneio de Jogos":
         return games.map(game => ({ title: game }));
       default:

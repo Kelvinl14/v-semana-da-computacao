@@ -74,7 +74,9 @@ export default {
 					blue: '#1E90FF',
 					purple: '#9370DB',
 					orange: '#FF8C00',
-					pink: '#FF1493'
+					pink: '#FF1493',
+					red: '#FF4500',
+					yellow: '#FFD700'
 				},
 				gaming: {
 					dark: '#1A1F2C',

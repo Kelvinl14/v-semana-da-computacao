@@ -12,49 +12,49 @@ const TorneioJogos = () => {
       format: "8 times de 3 jogadores",
       slots: 24,
       style: "Mata-Mata 3v3",
-      image: "https://placehold.co/300x200/f8f8f8/2e3a59?text=Brawl+Stars",
+      image: "src/assets/img/Brawl_Stars_iOS_ícone.jpg",
       conditions: [
         "Modo: Mata-Mata (3v3)",
         "Mapas: Sorteados previamente",
         "Duração: 2 minutos por partida"
       ],
       icon: <Gamepad className="w-6 h-6" />,
-      color: "neon-green"
+      color: "neon-yellow"
     },
     {
       name: "Naruto",
       format: "Duelo 1x1",
       slots: 32,
       style: "Versus",
-      image: "https://placehold.co/300x200/f8f8f8/2e3a59?text=Naruto",
+      image: "src/assets/img/naruto.webp",
       conditions: [
         "Modo: Versus (1v1)",
         "Personagens: Todos liberados",
         "Duração: 99 segundos por round"
       ],
       icon: <Gamepad className="w-6 h-6" />,
-      color: "neon-blue"
+      color: "neon-purple"
     },
     {
       name: "Mortal Kombat",
       format: "Duelo 1x1",
       slots: 32,
       style: "Eliminação",
-      image: "https://placehold.co/300x200/f8f8f8/2e3a59?text=Mortal+Kombat",
+      image: "src/assets/img/mortal-kombat.jpg",
       conditions: [
         "Modo: Torneio (1v1)",
         "Vida: 100%",
         "Duração: 90 segundos por round"
       ],
       icon: <Gamepad className="w-6 h-6" />,
-      color: "neon-purple"
+      color: "neon-red"
     },
     {
       name: "Counter-Strike 1.6",
       format: "6 times de 4 jogadores",
       slots: 24,
       style: "Combate por rodadas",
-      image: "https://placehold.co/300x200/f8f8f8/2e3a59?text=CS+1.6",
+      image: "src/assets/img/cs-1.6.jpg",
       conditions: [
         "Mapa: de_dust2",
         "Rodadas: Eliminação",
@@ -68,28 +68,28 @@ const TorneioJogos = () => {
       format: "Partidas 1x1",
       slots: 16,
       style: "Futebol Virtual",
-      image: "https://placehold.co/300x200/f8f8f8/2e3a59?text=FIFA",
+      image: "src/assets/img/fifa.jpg",
       conditions: [
         "Tempo: 6 minutos por partida",
         "Dificuldade: Profissional",
         "Times: Atualizados"
       ],
       icon: <Gamepad className="w-6 h-6" />,
-      color: "neon-pink"
+      color: "neon-blue"
     },
     {
       name: "Mario Kart",
       format: "Corridas individuais",
       slots: 16,
       style: "Corrida",
-      image: "https://placehold.co/300x200/f8f8f8/2e3a59?text=Mario+Kart",
+      image: "src/assets/img/mario-kart.jpg",
       conditions: [
         "Corridas: 3 voltas",
         "Itens: Todos ativos",
         "Personagens: Livre escolha"
       ],
       icon: <Gamepad className="w-6 h-6" />,
-      color: "neon-green"
+      color: "neon-pink"
     }
   ];
 
@@ -134,7 +134,8 @@ const TorneioJogos = () => {
           {/* Gif centralizado */}
           <div className="flex justify-center pt-12 pb-8">
             <img 
-              src="https://placehold.co/300x200/f8f8f8/2e3a59?text=Gaming+GIF" 
+              src="src/assets/gif/gaming.gif" 
+              width={280}
               alt="Gaming animation" 
               className="rounded-lg shadow-sm"
             />
@@ -186,13 +187,17 @@ const TorneioJogos = () => {
                   style={{borderColor: game.color === 'neon-green' ? '#66ff66' : 
                                       game.color === 'neon-blue' ? '#5ea8ff' : 
                                       game.color === 'neon-purple' ? '#b49fe0' : 
-                                      game.color === 'neon-orange' ? '#ffb347' : '#ff66aa'}}
+                                      game.color === 'neon-orange' ? '#ffb347' :
+                                      game.color === 'neon-red' ? '#FF4500' :
+                                      game.color === 'neon-yellow' ? '#FFD700' : '#ff66aa'}}
                 >
                   <div className="p-4 border-b border-gray-700 flex items-center" 
                        style={{backgroundColor: game.color === 'neon-green' ? '#66ff66' : 
                                               game.color === 'neon-blue' ? '#5ea8ff' : 
                                               game.color === 'neon-purple' ? '#b49fe0' : 
-                                              game.color === 'neon-orange' ? '#ffb347' : '#ff66aa',
+                                              game.color === 'neon-orange' ? '#ffb347' : 
+                                              game.color === 'neon-red' ? '#FF4500' :
+                                              game.color === 'neon-yellow' ? '#FFD700' :  '#ff66aa',
                               color: '#1A1F2C'}}>
                     <span>
                       {game.icon}
@@ -218,11 +223,16 @@ const TorneioJogos = () => {
                           color: game.color === 'neon-green' ? '#66ff66' : 
                                  game.color === 'neon-blue' ? '#5ea8ff' : 
                                  game.color === 'neon-purple' ? '#b49fe0' : 
-                                 game.color === 'neon-orange' ? '#ffb347' : '#ff66aa',
+                                 game.color === 'neon-orange' ? '#ffb347' : 
+                                 game.color === 'neon-red' ? '#FF4500' :
+                                 game.color === 'neon-yellow' ? '#FFD700' : '#ff66aa',
+                                 
                           borderColor: game.color === 'neon-green' ? '#66ff66' : 
                                       game.color === 'neon-blue' ? '#5ea8ff' : 
                                       game.color === 'neon-purple' ? '#b49fe0' : 
-                                      game.color === 'neon-orange' ? '#ffb347' : '#ff66aa'
+                                      game.color === 'neon-orange' ? '#ffb347' : 
+                                      game.color === 'neon-red' ? '#FF4500' :
+                                      game.color === 'neon-yellow' ? '#FFD700' : '#ff66aa'
                         }}>
                           {game.slots} jogadores
                         </Badge>

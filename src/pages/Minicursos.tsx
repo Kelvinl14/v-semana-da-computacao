@@ -1,6 +1,6 @@
 
 import Layout from "../components/Layout/Layout";
-import { workshopsData } from "../data/scheduleData";
+import { MinicursosData } from "../data/scheduleData";
 
 const Minicursos = () => {
   return (
@@ -12,7 +12,7 @@ const Minicursos = () => {
           </h1>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {workshopsData.map((minicurso, index) => (
+            {MinicursosData.map((minicurso, index) => (
               <div key={index} className="bg-white rounded-lg shadow-sm overflow-hidden">
                 <div className="p-6">
                   <div className="flex justify-between items-start mb-4">

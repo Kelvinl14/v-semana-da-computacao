@@ -198,7 +198,7 @@ export const scheduleDay3: ScheduleItem[] = [
   }
 ];
 
-export const workshopsData = [
+export const MinicursosData = [
   {
     title: "Python - Básico",
     instructor: "Antonio Wills",
