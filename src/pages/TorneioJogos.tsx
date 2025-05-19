@@ -51,7 +51,7 @@ const TorneioJogos = () => {
     },
     {
       name: "Counter-Strike 1.6",
-      format: "6 times de 4 jogadores",
+      format: "4 times de 6 jogadores",
       slots: 24,
       style: "Combate por rodadas",
       image: "src/assets/img/cs-1.6.jpg",
@@ -135,7 +135,7 @@ const TorneioJogos = () => {
           <div className="flex justify-center pt-12 pb-8">
             <img 
               src="src/assets/gif/gaming.gif" 
-              width={280}
+              width={250}
               alt="Gaming animation" 
               className="rounded-lg shadow-sm"
             />
@@ -293,7 +293,8 @@ const TorneioJogos = () => {
             
             <div className="flex justify-center mt-8">
               <a 
-                href="#download-regulamento" 
+                href="src/assets/docs/regulamento_oficial.pdf"
+                download 
                 className="px-6 py-3 bg-[#5ea8ff] text-white rounded-md shadow-sm hover:bg-[#4d8ad9] transition-colors flex items-center justify-center space-x-2"
               >
                 <span>📄 Baixar Regulamento Oficial</span>

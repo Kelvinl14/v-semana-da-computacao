@@ -10,11 +10,9 @@ interface SelectableEventProps {
 const SelectableEventBlocks = ({ eventType, onChange }: SelectableEventProps) => {
   const [selectedEvents, setSelectedEvents] = useState<string[]>([]);
   
-  const games = [
-    "Brawl Stars", 
+  const games = [ 
     "Naruto", 
     "Mortal Kombat", 
-    "Counter-Strike 1.6", 
     "FIFA", 
     "Mario Kart"
   ];
