@@ -71,13 +71,13 @@ const formatarEventosPorTipo = (eventos: string[]) => {
 const enviarEmailConfirmacao = async (formData: typeof initialFormData) => {
   const eventosFormatados = formatarEventosPorTipo(formData.selectedEvents);
   try {
-    await emailjs.send('service_mj0ktrd', 'template_5axlnym', {
+    await emailjs.send('service_s1ntpji', 'template_4usyhrl', {
       nome: formData.nome,
       email: formData.email,
       celular: formData.celular,
       participacoes: formData.participacao.join(", "),
       eventos: eventosFormatados,
-    }, 'cMS2_3dOhHpHGWyGT');
+    }, 'xHH8xpl3eqs0e9JmY');
   } catch (error) {
     console.error("Erro ao enviar e-mail:", error);
   }
